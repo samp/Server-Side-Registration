@@ -13,7 +13,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = DB::select('select * from users', array(1));
+        $users = DB::select('select * from userdetails', array(1));
         return view('user.index', compact('users'));
     }
 }

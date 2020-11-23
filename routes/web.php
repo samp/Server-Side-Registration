@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'users');
 
 Route::get('users', [UserController::class, 'index'])->middleware('auth');;
 Auth::routes();

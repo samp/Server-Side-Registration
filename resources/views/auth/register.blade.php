@@ -10,30 +10,70 @@
                 <div class="card-body">
                     <form method="post" action="{{ route('register') }}">
                         @csrf
+
                         <fieldset>
                             <legend>Enter your registration details</legend>
-                            <div>
+                            <div class="form-group row">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">Username:</label>
-                                <input type="text" required name="username" id="username">
+                                <div class="col-md-6">
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" required name="username" id="username">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password:</label>
-                                <input type="password" required name="password" id="password">
+                                <div class="col-md-6">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" required name="password" id="password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
-                                <input type="email" required name="email" id="email">
+                                <div class="col-md-6">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" required name="email" id="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="url" class="col-md-4 col-form-label text-md-right">Webpage URL:</label>
-                                <input type="url" name="url" id="url">
+                                <div class="col-md-6">
+                                <input type="url" class="form-control @error('url') is-invalid @enderror" name="url" id="url">
+                                @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="dob" class="col-md-4 col-form-label text-md-right">Date of birth:</label>
-                                <input type="date" required name="dob" id="dob">
+                                <div class="col-md-6">
+                                <input type="date" class="form-control @error('dob') is-invalid @enderror" required name="dob" id="dob">
+                                @error('date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             </div>
                         </fieldset>
-                        <div><button type="submit" name="submit" formnovalidate class="btn btn-primary">Submit Details</button></div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" name="submit" formnovalidate class="btn btn-primary">Submit details</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
