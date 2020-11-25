@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div class="container">
     <h1>List of Users</h1>
 
     <ul>
@@ -11,5 +12,5 @@
             <li>{{ $user->username }}: {{ $user->url }}</li>
         @endforeach
     </ul>
-
+</div>
 @endsection
