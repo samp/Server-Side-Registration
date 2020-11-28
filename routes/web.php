@@ -20,4 +20,6 @@ Route::redirect('/', 'users');
 Route::get('users', [UserController::class, 'index'])->middleware('auth');;
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
+
+Route::view('/welcome', 'welcome');
