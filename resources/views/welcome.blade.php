@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in! Welcome, ') }} {{ $user->username }}.
                     <br><br>
                     <a href="{{ url('users') }}">{{ __('Continue') }}</a>
                 </div>

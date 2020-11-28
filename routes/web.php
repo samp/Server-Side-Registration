@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::redirect('/', 'users');
 
-Route::get('users', [UserController::class, 'index'])->middleware('auth');;
+Route::get('users', [UserController::class, 'index'])->middleware('auth');
 Auth::routes();
 
 /*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
 
-Route::view('/welcome', 'welcome');
+Route::get('welcome', [WelcomeController::class, 'index'])->middleware('auth');
