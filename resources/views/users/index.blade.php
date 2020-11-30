@@ -9,7 +9,7 @@
 
     <ul>
         @foreach($users as $user)
-            <li>{{ $user->username }}: {{ $user->url }}</li>
+            <li> <a href="/users/{{ $user->username }}">{{ $user->username }}</a>: {{ $user->url }}</li>
         @endforeach
     </ul>
 </div>

@@ -16,11 +16,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::redirect('/', 'users');
 
-Route::get('users', [UserController::class, 'index'])->middleware('auth');
+
+// this works??? why
+//Route::get('/users/{username}', [UserController::class, 'show']);
+
+//Route::get('users', [UserController::class, 'index'])->middleware('auth');
+
+Route::resource('users', UserController::class)->middleware('auth');
+
 Auth::routes();
 
-/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
-
 Route::get('welcome', [WelcomeController::class, 'index'])->middleware('auth');
+
+Route::redirect('/', 'users');

@@ -14,9 +14,15 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in! Welcome, ') }} {{ $user->username }}.
+                    {{ __('You are logged in! Welcome, ') }} {{ $user->username }}
                     <br><br>
-                    <a href="{{ url('users') }}">{{ __('Continue') }}</a>
+
+                    @can ('viewAny', User::class))
+                        <a href="{{ url('users') }}">{{ __('Continue') }}</a>
+                    @else
+                        <a href="{{ url('users/'.$user->username) }}">{{ __('Continue') }}</a>
+                    @endcan
+                    
                 </div>
             </div>
         </div>
