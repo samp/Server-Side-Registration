@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\ReCaptcha;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/users';
 
     /**
      * Create a new controller instance.
@@ -49,16 +50,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //ddd($data);
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:20', 'unique:userdetails'],
             'password' => ['required', 'string', 'min:5', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'url' => ['max:255', 'url'],
             'dob' => ['required', 'date', 'before_or_equal:-18 years'],
+            'g-recaptcha-response' => [new Recaptcha, 'required'],
         ],
         [
             'dob.before_or_equal' => 'You must be 18 or older to join.',
+            'g-recaptcha' => 'You must complete the reCAPTCHA.',
         ]);
+        
     }
 
     /**

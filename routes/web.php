@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +18,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
 
+Route::get('users/{username}', [UserController::class, 'show'])->middleware('auth');
+Route::get('users', [UserController::class, 'index'])->middleware('auth');
 
-// this works??? why
-//Route::get('/users/{username}', [UserController::class, 'show']);
-
-//Route::get('users', [UserController::class, 'index'])->middleware('auth');
-
-Route::resource('users', UserController::class)->middleware('auth');
+//Route::resource('users', UserController::class)->middleware('auth');
 
 Auth::routes();
 
+//Route::get('register', [RegisterController::class, '']);
 Route::get('welcome', [WelcomeController::class, 'index'])->middleware('auth');
 
 Route::redirect('/', 'users');
