@@ -12,7 +12,7 @@
                         @csrf
 
                         <fieldset>
-                            <legend>Enter your registration details</legend>
+                            <legend class="h1">Enter your registration details</legend>
                             <br>
                             <div class="form-group row">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">Username:</label>

@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:20', 'unique:userdetails'],
             'password' => ['required', 'string', 'min:5', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'url' => ['max:255', 'url'],
+            'url' => ['nullable', 'max:255', 'url'],
             'dob' => ['required', 'date', 'before_or_equal:-18 years'],
             'g-recaptcha-response' => [new Recaptcha, 'required'],
         ],
