@@ -27,12 +27,12 @@ class ReCaptcha implements Rule
     // from https://laravelarticle.com/laravel-google-recaptcha-integration
     public function passes($attribute, $value)
     {
-        //dd($value);
         $data = array(
             'secret'   => env('RECAPTCHA_SECRET'),
             'response' => $value
         );
 
+        // Actual captcha validation, sends captcha data to Google servers, which returns reponse
         try {
             $verify = curl_init();
             curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
@@ -41,7 +41,6 @@ class ReCaptcha implements Rule
             curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($verify);
-            //dd($response);
             return json_decode($response)->success;
         } catch (\Exception $e) {
             return false;

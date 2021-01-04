@@ -50,7 +50,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //ddd($data);
+        /// Custom validation rules
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:20', 'unique:userdetails'],
             'password' => ['required', 'string', 'min:5', 'max:20'],
@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'dob' => ['required', 'date', 'before_or_equal:-18 years'],
             'g-recaptcha-response' => [new Recaptcha, 'required'],
         ],
+        /// Custom validation error messages
         [
             'dob.before_or_equal' => 'You must be 18 or older to join.',
             'g-recaptcha' => 'You must complete the reCAPTCHA.',
