@@ -16,15 +16,15 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
 
-        return view('users.index', compact('users'));
+        return view('users.index' );
     }
 
     public function show(User $user)
     {
         //Gate::authorize('view', $user);
 
-        return view ('users.show', compact('user'));
+        return view ('users.show');
     }
 }
